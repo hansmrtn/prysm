@@ -19,7 +19,7 @@ import (
 type Option func(s *Service) error
 
 // WithMaxGoroutines to control resource use of the blockchain service.
-func WithMaxGoroutines(x int) Option {
+func WithMaxGoroutines(x uint64) Option {
 	return func(s *Service) error {
 		s.cfg.MaxRoutines = x
 		return nil
