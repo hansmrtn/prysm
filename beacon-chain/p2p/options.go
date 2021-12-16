@@ -76,7 +76,7 @@ func (s *Service) buildOptions(ip net.IP, priKey *ecdsa.PrivateKey) []libp2p.Opt
 	return options
 }
 
-func multiAddressBuilder(ipAddr string, port uint) (ma.Multiaddr, error) {
+func multiAddressBuilder(ipAddr string, port uint64) (ma.Multiaddr, error) {
 	parsedIP := net.ParseIP(ipAddr)
 	if parsedIP.To4() == nil && parsedIP.To16() == nil {
 		return nil, errors.Errorf("invalid ip address provided: %s", ipAddr)

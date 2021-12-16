@@ -157,7 +157,7 @@ func ipAddr() net.IP {
 }
 
 // Attempt to dial an address to verify its connectivity
-func verifyConnectivity(addr string, port uint, protocol string) {
+func verifyConnectivity(addr string, port uint64, protocol string) {
 	if addr != "" {
 		a := net.JoinHostPort(addr, fmt.Sprintf("%d", port))
 		fields := logrus.Fields{
