@@ -32,7 +32,7 @@ type Config struct {
 	ValidatorGatewayHost     string
 	ValidatorGatewayPort     int
 	ValidatorMonitoringHost  string
-	ValidatorMonitoringPort  int
+	ValidatorMonitoringPort  uint64
 	BeaconClientEndpoint     string
 	ClientMaxCallRecvMsgSize int
 	ClientGrpcRetries        uint
@@ -87,7 +87,7 @@ type Server struct {
 	walletInitialized         bool
 	nodeGatewayEndpoint       string
 	validatorMonitoringHost   string
-	validatorMonitoringPort   int
+	validatorMonitoringPort   uint64
 	validatorGatewayHost      string
 	validatorGatewayPort      int
 }

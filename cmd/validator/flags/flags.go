@@ -119,7 +119,7 @@ var (
 			"(browser enforced). This flag has no effect if not used with --grpc-gateway-port.",
 		Value: "http://localhost:4242,http://127.0.0.1:4242,http://localhost:4200,http://0.0.0.0:4242,http://0.0.0.0:4200"}
 	// MonitoringPortFlag defines the http port used to serve prometheus metrics.
-	MonitoringPortFlag = &cli.IntFlag{
+	MonitoringPortFlag = &cli.Uint64Flag{
 		Name:  "monitoring-port",
 		Usage: "Port used to listening and respond metrics for prometheus.",
 		Value: 8081,
