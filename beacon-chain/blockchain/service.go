@@ -79,7 +79,7 @@ type config struct {
 	ExitPool                voluntaryexits.PoolManager
 	SlashingPool            slashings.PoolManager
 	P2p                     p2p.Broadcaster
-	MaxRoutines             int
+	MaxRoutines             uint64
 	StateNotifier           statefeed.Notifier
 	ForkChoiceStore         f.ForkChoicer
 	AttService              *attestations.Service
@@ -155,7 +155,7 @@ func (s *Service) Status() error {
 	if s.originBlockRoot == params.BeaconConfig().ZeroHash {
 		return errors.New("genesis state has not been created")
 	}
-	if runtime.NumGoroutine() > s.cfg.MaxRoutines {
+	if runtime.NumGoroutine() > int(s.cfg.MaxRoutines) {
 		return fmt.Errorf("too many goroutines %d", runtime.NumGoroutine())
 	}
 	return nil

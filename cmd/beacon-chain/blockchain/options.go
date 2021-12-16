@@ -15,7 +15,7 @@ func FlagOptions(c *cli.Context) ([]blockchain.Option, error) {
 	if err != nil {
 		return nil, err
 	}
-	maxRoutines := c.Int(cmd.MaxGoroutines.Name)
+	maxRoutines := c.Uint64(cmd.MaxGoroutines.Name)
 	opts := []blockchain.Option{
 		blockchain.WithMaxGoroutines(maxRoutines),
 		blockchain.WithWeakSubjectivityCheckpoint(wsCheckpt),
