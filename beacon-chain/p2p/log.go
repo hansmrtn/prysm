@@ -27,7 +27,7 @@ func logIPAddr(id peer.ID, addrs ...ma.Multiaddr) {
 	}
 }
 
-func logExternalIPAddr(id peer.ID, addr string, port uint) {
+func logExternalIPAddr(id peer.ID, addr string, port uint64) {
 	if addr != "" {
 		multiAddr, err := multiAddressBuilder(addr, port)
 		if err != nil {
@@ -41,7 +41,7 @@ func logExternalIPAddr(id peer.ID, addr string, port uint) {
 	}
 }
 
-func logExternalDNSAddr(id peer.ID, addr string, port uint) {
+func logExternalDNSAddr(id peer.ID, addr string, port uint64) {
 	if addr != "" {
 		p := strconv.FormatUint(uint64(port), 10)
 

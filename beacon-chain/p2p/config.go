@@ -21,9 +21,9 @@ type Config struct {
 	PrivateKey          string
 	DataDir             string
 	MetaDataDir         string
-	TCPPort             uint
-	UDPPort             uint
-	MaxPeers            uint
+	TCPPort             uint64
+	UDPPort             uint64
+	MaxPeers            uint64
 	AllowListCIDR       string
 	DenyListCIDR        []string
 	StateNotifier       statefeed.Notifier
