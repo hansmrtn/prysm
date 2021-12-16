@@ -40,7 +40,7 @@ type Server struct {
 	GenesisTimeFetcher   blockchain.TimeFetcher
 	GenesisFetcher       blockchain.GenesisFetcher
 	BeaconMonitoringHost string
-	BeaconMonitoringPort int
+	BeaconMonitoringPort uint64
 }
 
 // GetSyncStatus checks the current network sync status of the node.

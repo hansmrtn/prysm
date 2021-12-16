@@ -366,7 +366,7 @@ func (c *ValidatorClient) registerPrometheusService(cliCtx *cli.Context) error {
 		)
 	}
 	service := prometheus.NewService(
-		fmt.Sprintf("%s:%d", c.cliCtx.String(cmd.MonitoringHostFlag.Name), c.cliCtx.Int(flags.MonitoringPortFlag.Name)),
+		fmt.Sprintf("%s:%d", c.cliCtx.String(cmd.MonitoringHostFlag.Name), c.cliCtx.Uint64(flags.MonitoringPortFlag.Name)),
 		c.services,
 		additionalHandlers...,
 	)
@@ -429,7 +429,7 @@ func (c *ValidatorClient) registerRPCService(cliCtx *cli.Context, km keymanager.
 	validatorGatewayHost := cliCtx.String(flags.GRPCGatewayHost.Name)
 	validatorGatewayPort := cliCtx.Int(flags.GRPCGatewayPort.Name)
 	validatorMonitoringHost := cliCtx.String(cmd.MonitoringHostFlag.Name)
-	validatorMonitoringPort := cliCtx.Int(flags.MonitoringPortFlag.Name)
+	validatorMonitoringPort := cliCtx.Uint64(flags.MonitoringPortFlag.Name)
 	rpcHost := cliCtx.String(flags.RPCHost.Name)
 	rpcPort := cliCtx.Int(flags.RPCPort.Name)
 	nodeGatewayEndpoint := cliCtx.String(flags.BeaconRPCGatewayProviderFlag.Name)
