@@ -9,8 +9,10 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-// processSyncCommitteeContribution logs the event when tracked validators' aggregated sync contribution has been processed.
-// TODO: We do not log if a sync contribution was included in an aggregate (we log them when they are included in blocks)
+// processSyncCommitteeContribution logs the event that one of our tracked
+// validators' aggregated sync contribution has been processed.
+// TODO: We do not log if a sync contribution was included in an aggregate (we
+// log them when they are included in blocks)
 func (s *Service) processSyncCommitteeContribution(contribution *ethpb.SignedContributionAndProof) {
 	idx := contribution.Message.AggregatorIndex
 	s.Lock()
@@ -24,14 +26,15 @@ func (s *Service) processSyncCommitteeContribution(contribution *ethpb.SignedCon
 	}
 }
 
-// processSyncAggregate logs the event when tracked validators is a sync-committee member and its contribution has been included
+// processSyncAggregate logs the event that one of our tracked validators is a sync-committee member and its
+// contribution was included
 func (s *Service) processSyncAggregate(state state.BeaconState, blk block.BeaconBlock) {
 	if blk == nil || blk.Body() == nil {
 		return
 	}
 	bits, err := blk.Body().SyncAggregate()
 	if err != nil {
-		log.WithError(err).Error("Could not get SyncAggregate")
+		log.WithError(err).Error("Cannot get SyncAggregate")
 		return
 	}
 	s.Lock()
@@ -65,11 +68,11 @@ func (s *Service) processSyncAggregate(state state.BeaconState, blk block.Beacon
 				fmt.Sprintf("%d", validatorIdx)).Add(float64(contrib))
 
 			log.WithFields(logrus.Fields{
-				"ValidatorIndex":       validatorIdx,
-				"ExpectedContribCount": len(committeeIndices),
-				"ContribCount":         contrib,
-				"NewBalance":           balance,
-				"BalanceChange":        balanceChg,
+				"ValidatorIndex":  validatorIdx,
+				"ExpectedContrib": len(committeeIndices),
+				"Contributions":   contrib,
+				"NewBalance":      balance,
+				"BalanceChange":   balanceChg,
 			}).Info("Sync committee contribution included")
 		}
 	}
