@@ -65,7 +65,7 @@ func TestCreateListener(t *testing.T) {
 	s := &Service{
 		genesisTime:           time.Now(),
 		genesisValidatorsRoot: bytesutil.PadTo([]byte{'A'}, 32),
-		cfg:                   &Config{UDPPort: uint(port)},
+		cfg:                   &Config{UDPPort: uint64(port)},
 	}
 	listener, err := s.createListener(ipAddr, pkey)
 	require.NoError(t, err)
@@ -89,7 +89,7 @@ func TestStartDiscV5_DiscoverAllPeers(t *testing.T) {
 	genesisTime := time.Now()
 	genesisValidatorsRoot := make([]byte, 32)
 	s := &Service{
-		cfg:                   &Config{UDPPort: uint(port)},
+		cfg:                   &Config{UDPPort: uint64(port)},
 		genesisTime:           genesisTime,
 		genesisValidatorsRoot: genesisValidatorsRoot,
 	}
@@ -104,7 +104,7 @@ func TestStartDiscV5_DiscoverAllPeers(t *testing.T) {
 		port = 3000 + i
 		cfg := &Config{
 			Discv5BootStrapAddr: []string{bootNode.String()},
-			UDPPort:             uint(port),
+			UDPPort:             uint64(port),
 		}
 		ipAddr, pkey := createAddrAndPrivKey(t)
 		s = &Service{
@@ -274,7 +274,7 @@ func TestUDPMultiAddress(t *testing.T) {
 	genesisTime := time.Now()
 	genesisValidatorsRoot := make([]byte, 32)
 	s := &Service{
-		cfg:                   &Config{UDPPort: uint(port)},
+		cfg:                   &Config{UDPPort: uint64(port)},
 		genesisTime:           genesisTime,
 		genesisValidatorsRoot: genesisValidatorsRoot,
 	}
@@ -361,7 +361,7 @@ func TestRefreshENR_ForkBoundaries(t *testing.T) {
 				s := &Service{
 					genesisTime:           time.Now(),
 					genesisValidatorsRoot: bytesutil.PadTo([]byte{'A'}, 32),
-					cfg:                   &Config{UDPPort: uint(port)},
+					cfg:                   &Config{UDPPort: uint64(port)},
 				}
 				listener, err := s.createListener(ipAddr, pkey)
 				assert.NoError(t, err)
@@ -382,7 +382,7 @@ func TestRefreshENR_ForkBoundaries(t *testing.T) {
 				s := &Service{
 					genesisTime:           time.Now(),
 					genesisValidatorsRoot: bytesutil.PadTo([]byte{'A'}, 32),
-					cfg:                   &Config{UDPPort: uint(port)},
+					cfg:                   &Config{UDPPort: uint64(port)},
 				}
 				listener, err := s.createListener(ipAddr, pkey)
 				assert.NoError(t, err)
@@ -404,7 +404,7 @@ func TestRefreshENR_ForkBoundaries(t *testing.T) {
 				s := &Service{
 					genesisTime:           time.Now().Add(-5 * oneEpochDuration()),
 					genesisValidatorsRoot: bytesutil.PadTo([]byte{'A'}, 32),
-					cfg:                   &Config{UDPPort: uint(port)},
+					cfg:                   &Config{UDPPort: uint64(port)},
 				}
 				listener, err := s.createListener(ipAddr, pkey)
 				assert.NoError(t, err)
@@ -435,7 +435,7 @@ func TestRefreshENR_ForkBoundaries(t *testing.T) {
 				s := &Service{
 					genesisTime:           time.Now().Add(-5 * oneEpochDuration()),
 					genesisValidatorsRoot: bytesutil.PadTo([]byte{'A'}, 32),
-					cfg:                   &Config{UDPPort: uint(port)},
+					cfg:                   &Config{UDPPort: uint64(port)},
 				}
 				listener, err := s.createListener(ipAddr, pkey)
 				assert.NoError(t, err)
@@ -465,7 +465,7 @@ func TestRefreshENR_ForkBoundaries(t *testing.T) {
 				s := &Service{
 					genesisTime:           time.Now().Add(-6 * oneEpochDuration()),
 					genesisValidatorsRoot: bytesutil.PadTo([]byte{'A'}, 32),
-					cfg:                   &Config{UDPPort: uint(port)},
+					cfg:                   &Config{UDPPort: uint64(port)},
 				}
 				listener, err := s.createListener(ipAddr, pkey)
 				assert.NoError(t, err)

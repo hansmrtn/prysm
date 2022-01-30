@@ -151,7 +151,7 @@ func TestListenForNewNodes(t *testing.T) {
 	notifier := &mock.MockStateNotifier{}
 	cfg := &Config{StateNotifier: notifier}
 	port := 2000
-	cfg.UDPPort = uint(port)
+	cfg.UDPPort = uint64(port)
 	_, pkey := createAddrAndPrivKey(t)
 	ipAddr := net.ParseIP("127.0.0.1")
 	genesisTime := prysmTime.Now()
@@ -185,8 +185,8 @@ func TestListenForNewNodes(t *testing.T) {
 	}
 	for i := 1; i <= 5; i++ {
 		h, pkey, ipAddr := createHost(t, port+i)
-		cfg.UDPPort = uint(port + i)
-		cfg.TCPPort = uint(port + i)
+		cfg.UDPPort = uint64(port + i)
+		cfg.TCPPort = uint64(port + i)
 		s := &Service{
 			cfg:                   cfg,
 			genesisTime:           genesisTime,

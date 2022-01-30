@@ -17,7 +17,7 @@ func TestVerifyConnectivity(t *testing.T) {
 	hook := logTest.NewGlobal()
 	cases := []struct {
 		address              string
-		port                 uint
+		port                 uint64
 		expectedConnectivity bool
 		name                 string
 	}{

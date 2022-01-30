@@ -34,7 +34,7 @@ func TestStartDiscv5_DifferentForkDigests(t *testing.T) {
 	genesisValidatorsRoot := make([]byte, fieldparams.RootLength)
 	s := &Service{
 		cfg: &Config{
-			UDPPort:       uint(port),
+			UDPPort:       uint64(port),
 			StateNotifier: &mock.MockStateNotifier{},
 		},
 		genesisTime:           genesisTime,
@@ -47,14 +47,14 @@ func TestStartDiscv5_DifferentForkDigests(t *testing.T) {
 	bootNode := bootListener.Self()
 	cfg := &Config{
 		Discv5BootStrapAddr: []string{bootNode.String()},
-		UDPPort:             uint(port),
+		UDPPort:             uint64(port),
 		StateNotifier:       &mock.MockStateNotifier{},
 	}
 
 	var listeners []*discover.UDPv5
 	for i := 1; i <= 5; i++ {
 		port = 3000 + i
-		cfg.UDPPort = uint(port)
+		cfg.UDPPort = uint64(port)
 		ipAddr, pkey := createAddrAndPrivKey(t)
 
 		// We give every peer a different genesis validators root, which
@@ -121,7 +121,7 @@ func TestStartDiscv5_SameForkDigests_DifferentNextForkData(t *testing.T) {
 	genesisTime := time.Now()
 	genesisValidatorsRoot := make([]byte, 32)
 	s := &Service{
-		cfg:                   &Config{UDPPort: uint(port)},
+		cfg:                   &Config{UDPPort: uint64(port)},
 		genesisTime:           genesisTime,
 		genesisValidatorsRoot: genesisValidatorsRoot,
 		stateNotifier:         &mock.MockStateNotifier{},
@@ -133,14 +133,14 @@ func TestStartDiscv5_SameForkDigests_DifferentNextForkData(t *testing.T) {
 	bootNode := bootListener.Self()
 	cfg := &Config{
 		Discv5BootStrapAddr: []string{bootNode.String()},
-		UDPPort:             uint(port),
+		UDPPort:             uint64(port),
 	}
 
 	params.SetupTestConfigCleanup(t)
 	var listeners []*discover.UDPv5
 	for i := 1; i <= 5; i++ {
 		port = 3000 + i
-		cfg.UDPPort = uint(port)
+		cfg.UDPPort = uint64(port)
 		ipAddr, pkey := createAddrAndPrivKey(t)
 
 		c := params.BeaconConfig()

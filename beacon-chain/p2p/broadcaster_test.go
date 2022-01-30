@@ -207,7 +207,7 @@ func TestService_BroadcastAttestationWithDiscoveryAttempts(t *testing.T) {
 	// Setup bootnode.
 	cfg := &Config{}
 	port := 2000
-	cfg.UDPPort = uint(port)
+	cfg.UDPPort = uint64(port)
 	_, pkey := createAddrAndPrivKey(t)
 	ipAddr := net.ParseIP("127.0.0.1")
 	genesisTime := time.Now()
@@ -242,8 +242,8 @@ func TestService_BroadcastAttestationWithDiscoveryAttempts(t *testing.T) {
 	// Setup 2 different hosts
 	for i := 1; i <= 2; i++ {
 		h, pkey, ipAddr := createHost(t, port+i)
-		cfg.UDPPort = uint(port + i)
-		cfg.TCPPort = uint(port + i)
+		cfg.UDPPort = uint64(port + i)
+		cfg.TCPPort = uint64(port + i)
 		s := &Service{
 			cfg:                   cfg,
 			genesisTime:           genesisTime,

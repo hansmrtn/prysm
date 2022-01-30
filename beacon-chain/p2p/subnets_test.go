@@ -36,7 +36,7 @@ func TestStartDiscV5_DiscoverPeersWithSubnets(t *testing.T) {
 	genesisTime := time.Now()
 	genesisValidatorsRoot := make([]byte, 32)
 	s := &Service{
-		cfg:                   &Config{UDPPort: uint(port)},
+		cfg:                   &Config{UDPPort: uint64(port)},
 		genesisTime:           genesisTime,
 		genesisValidatorsRoot: genesisValidatorsRoot,
 	}
@@ -59,7 +59,7 @@ func TestStartDiscV5_DiscoverPeersWithSubnets(t *testing.T) {
 			BootstrapNodeAddr:   []string{bootNode.String()},
 			Discv5BootStrapAddr: []string{bootNode.String()},
 			MaxPeers:            30,
-			UDPPort:             uint(port),
+			UDPPort:             uint64(port),
 		}
 		ipAddr, pkey := createAddrAndPrivKey(t)
 		s = &Service{
@@ -89,7 +89,7 @@ func TestStartDiscV5_DiscoverPeersWithSubnets(t *testing.T) {
 		BootstrapNodeAddr:   []string{bootNode.String()},
 		Discv5BootStrapAddr: []string{bootNode.String()},
 		MaxPeers:            30,
-		UDPPort:             uint(port),
+		UDPPort:             uint64(port),
 	}
 	cfg.StateNotifier = &mock.MockStateNotifier{}
 	s, err = NewService(context.Background(), cfg)
