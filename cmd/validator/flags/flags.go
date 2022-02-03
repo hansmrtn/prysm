@@ -107,7 +107,7 @@ var (
 		Value: DefaultGatewayHost,
 	}
 	// GRPCGatewayPort enables a gRPC gateway to be exposed for the validator client.
-	GRPCGatewayPort = &cli.IntFlag{
+	GRPCGatewayPort = &cli.Uint64Flag{
 		Name:  "grpc-gateway-port",
 		Usage: "Enable gRPC gateway for JSON requests",
 		Value: 7500,

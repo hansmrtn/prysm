@@ -74,7 +74,7 @@ var (
 		Value: "127.0.0.1",
 	}
 	// GRPCGatewayPort specifies a gRPC gateway port for Prysm.
-	GRPCGatewayPort = &cli.IntFlag{
+	GRPCGatewayPort = &cli.Uint64Flag{
 		Name:  "grpc-gateway-port",
 		Usage: "The port on which the gateway server runs on",
 		Value: 3500,

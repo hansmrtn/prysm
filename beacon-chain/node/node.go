@@ -808,7 +808,7 @@ func (b *BeaconNode) registerGRPCGateway() error {
 	if b.cliCtx.Bool(flags.DisableGRPCGateway.Name) {
 		return nil
 	}
-	gatewayPort := b.cliCtx.Int(flags.GRPCGatewayPort.Name)
+	gatewayPort := b.cliCtx.Uint64(flags.GRPCGatewayPort.Name)
 	gatewayHost := b.cliCtx.String(flags.GRPCGatewayHost.Name)
 	rpcHost := b.cliCtx.String(flags.RPCHost.Name)
 	selfAddress := fmt.Sprintf("%s:%d", rpcHost, b.cliCtx.Int(flags.RPCPort.Name))

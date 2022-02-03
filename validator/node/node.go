@@ -336,7 +336,7 @@ func (c *ValidatorClient) initializeForWeb(cliCtx *cli.Context) error {
 		return err
 	}
 	gatewayHost := cliCtx.String(flags.GRPCGatewayHost.Name)
-	gatewayPort := cliCtx.Int(flags.GRPCGatewayPort.Name)
+	gatewayPort := cliCtx.Uint64(flags.GRPCGatewayPort.Name)
 	webAddress := fmt.Sprintf("http://%s:%d", gatewayHost, gatewayPort)
 	log.WithField("address", webAddress).Info(
 		"Starting Prysm web UI on address, open in browser to access",
@@ -464,7 +464,7 @@ func (c *ValidatorClient) registerRPCService(cliCtx *cli.Context) error {
 		return err
 	}
 	validatorGatewayHost := cliCtx.String(flags.GRPCGatewayHost.Name)
-	validatorGatewayPort := cliCtx.Int(flags.GRPCGatewayPort.Name)
+	validatorGatewayPort := cliCtx.Uint64(flags.GRPCGatewayPort.Name)
 	validatorMonitoringHost := cliCtx.String(cmd.MonitoringHostFlag.Name)
 	validatorMonitoringPort := cliCtx.Uint64(flags.MonitoringPortFlag.Name)
 	rpcHost := cliCtx.String(flags.RPCHost.Name)
@@ -510,7 +510,7 @@ func (c *ValidatorClient) registerRPCGatewayService(cliCtx *cli.Context) error {
 				"changing this parameter if you are exposing this host to the Internet!",
 		)
 	}
-	gatewayPort := cliCtx.Int(flags.GRPCGatewayPort.Name)
+	gatewayPort := cliCtx.Uint64(flags.GRPCGatewayPort.Name)
 	rpcHost := cliCtx.String(flags.RPCHost.Name)
 	rpcPort := cliCtx.Int(flags.RPCPort.Name)
 	rpcAddr := fmt.Sprintf("%s:%d", rpcHost, rpcPort)

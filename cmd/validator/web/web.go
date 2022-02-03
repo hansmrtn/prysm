@@ -39,7 +39,7 @@ var Commands = &cli.Command{
 					log.Fatal("--wallet-dir not specified")
 				}
 				gatewayHost := cliCtx.String(flags.GRPCGatewayHost.Name)
-				gatewayPort := cliCtx.Int(flags.GRPCGatewayPort.Name)
+				gatewayPort := cliCtx.Uint64(flags.GRPCGatewayPort.Name)
 				validatorWebAddr := fmt.Sprintf("%s:%d", gatewayHost, gatewayPort)
 				if err := rpc.CreateAuthToken(walletDirPath, validatorWebAddr); err != nil {
 					log.Fatalf("Could not create web auth token: %v", err)

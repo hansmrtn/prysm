@@ -73,7 +73,7 @@ func TestGateway_StartStop(t *testing.T) {
 	set := flag.NewFlagSet("test", 0)
 	ctx := cli.NewContext(&app, set, nil)
 
-	gatewayPort := ctx.Int(flags.GRPCGatewayPort.Name)
+	gatewayPort := ctx.Uint64(flags.GRPCGatewayPort.Name)
 	gatewayHost := ctx.String(flags.GRPCGatewayHost.Name)
 	rpcHost := ctx.String(flags.RPCHost.Name)
 	selfAddress := fmt.Sprintf("%s:%d", rpcHost, ctx.Int(flags.RPCPort.Name))
@@ -108,7 +108,7 @@ func TestGateway_NilHandler_NotFoundHandlerRegistered(t *testing.T) {
 	set := flag.NewFlagSet("test", 0)
 	ctx := cli.NewContext(&app, set, nil)
 
-	gatewayPort := ctx.Int(flags.GRPCGatewayPort.Name)
+	gatewayPort := ctx.Uint64(flags.GRPCGatewayPort.Name)
 	gatewayHost := ctx.String(flags.GRPCGatewayHost.Name)
 	rpcHost := ctx.String(flags.RPCHost.Name)
 	selfAddress := fmt.Sprintf("%s:%d", rpcHost, ctx.Int(flags.RPCPort.Name))
